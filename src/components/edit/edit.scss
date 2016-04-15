@@ -18,9 +18,11 @@
 .edit-content {
   width: 100%;
   height: 100%;
+  background: #fff;
 }
 
 .edit-area {
+  display: block;
   width: rem(640);
   height: 70%;
   border: 0;
