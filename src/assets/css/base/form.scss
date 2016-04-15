@@ -1,0 +1,419 @@
+.ui-form input[type='text'],
+.ui-form input[type='password'],
+.ui-form input[type='email'],
+.ui-form input[type='url'],
+.ui-form input[type='date'],
+.ui-form input[type='month'],
+.ui-form input[type='time'],
+.ui-form input[type='datetime'],
+.ui-form input[type='datetime-local'],
+.ui-form input[type='week'],
+.ui-form input[type='number'],
+.ui-form input[type='search'],
+.ui-form input[type='tel'],
+.ui-form input[type='color'],
+.ui-form select,
+.ui-form textarea {
+  font-size: 1em;
+
+  display: inline-block;
+
+  box-sizing: border-box;
+  padding: .858em 1.2em;
+
+  vertical-align: middle;
+
+  border: 1px solid $input-default-border-color;
+  border-radius: $input-default-border-radius;
+}
+
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+
+.ui-form input:not([type]) {
+  display: inline-block;
+
+  box-sizing: border-box;
+  padding: .5em .6em;
+
+  border: 1px solid $input-default-border-color;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px #ddd;
+}
+
+
+/* Chrome (as of v.32/34 on OS X) needs additional room for color to display. */
+
+
+/* May be able to remove this tweak as color inputs become more standardized across browsers. */
+
+.ui-form input[type='color'] {
+  padding: .2em .5em;
+}
+
+.ui-form input[type='text']:focus,
+.ui-form input[type='password']:focus,
+.ui-form input[type='email']:focus,
+.ui-form input[type='url']:focus,
+.ui-form input[type='date']:focus,
+.ui-form input[type='month']:focus,
+.ui-form input[type='time']:focus,
+.ui-form input[type='datetime']:focus,
+.ui-form input[type='datetime-local']:focus,
+.ui-form input[type='week']:focus,
+.ui-form input[type='number']:focus,
+.ui-form input[type='search']:focus,
+.ui-form input[type='tel']:focus,
+.ui-form input[type='color']:focus,
+.ui-form select:focus,
+.ui-form textarea:focus {
+  border-color: $input-focus-border-color;
+  outline: 0;
+}
+
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+
+.ui-form input:not([type]):focus {
+  border-color: $input-focus-border-color;
+  outline: 0;
+}
+
+.ui-form input[type='file']:focus,
+.ui-form input[type='radio']:focus,
+.ui-form input[type='checkbox']:focus {
+  outline: thin solid $input-focus-border-color;
+  outline: 1px auto $input-focus-border-color;
+}
+
+.ui-form .ui-checkbox,
+.ui-form .ui-radio {
+  display: block;
+
+  margin: .5em 0;
+  input {
+    margin-right: 4px;
+
+    vertical-align: -1px;
+  }
+}
+
+.ui-form input[type='text'][disabled],
+.ui-form input[type='password'][disabled],
+.ui-form input[type='email'][disabled],
+.ui-form input[type='url'][disabled],
+.ui-form input[type='date'][disabled],
+.ui-form input[type='month'][disabled],
+.ui-form input[type='time'][disabled],
+.ui-form input[type='datetime'][disabled],
+.ui-form input[type='datetime-local'][disabled],
+.ui-form input[type='week'][disabled],
+.ui-form input[type='number'][disabled],
+.ui-form input[type='search'][disabled],
+.ui-form input[type='tel'][disabled],
+.ui-form input[type='color'][disabled],
+.ui-form select[disabled],
+.ui-form textarea[disabled] {
+  cursor: not-allowed;
+
+  color: $input-disabled-text-color;
+  background-color: $input-disabled-bg-color;
+}
+
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+
+.ui-form input:not([type])[disabled] {
+  cursor: not-allowed;
+
+  color: $input-disabled-text-color;
+  background-color: $input-disabled-bg-color;
+}
+
+.ui-form input[readonly],
+.ui-form select[readonly],
+.ui-form textarea[readonly] {
+  /* menu hover bg color */
+  color: $input-readonly-text-color;
+  /* menu text color */
+  border-color: $input-default-border-color;
+  background-color: $input-readonly-bg-color;
+}
+
+.ui-form input:focus:invalid,
+.ui-form textarea:focus:invalid,
+.ui-form select:focus:invalid {
+  color: $input-invalid-text-color;
+  border-color: $input-invalid-border-color;
+}
+
+.ui-form input[type='file']:focus:invalid:focus,
+.ui-form input[type='radio']:focus:invalid:focus,
+.ui-form input[type='checkbox']:focus:invalid:focus {
+  outline-color: $input-invalid-border-color;
+}
+
+.ui-form select {
+  /* Normalizes the height; padding is not sufficient. */
+  height: 2.86em;
+
+  text-indent: 8px;
+
+  border: 1px solid $input-default-border-color;
+  background-color: white;
+}
+
+.ui-form select[multiple] {
+  height: auto;
+}
+
+.ui-form label {
+  margin: .5em 0 .2em;
+}
+
+.ui-form fieldset {
+  margin: 0;
+  padding: .35em 0 .75em;
+
+  border: 0;
+}
+
+.ui-form legend {
+  display: block;
+
+  width: 100%;
+  margin-bottom: .3em;
+  padding: .3em 0;
+
+  color: $form-legend-color;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.ui-form-stacked input[type='text'],
+.ui-form-stacked input[type='password'],
+.ui-form-stacked input[type='email'],
+.ui-form-stacked input[type='url'],
+.ui-form-stacked input[type='date'],
+.ui-form-stacked input[type='month'],
+.ui-form-stacked input[type='time'],
+.ui-form-stacked input[type='datetime'],
+.ui-form-stacked input[type='datetime-local'],
+.ui-form-stacked input[type='week'],
+.ui-form-stacked input[type='number'],
+.ui-form-stacked input[type='search'],
+.ui-form-stacked input[type='tel'],
+.ui-form-stacked input[type='color'],
+.ui-form-stacked input[type='file'],
+.ui-form-stacked select,
+.ui-form-stacked label,
+.ui-form-stacked textarea {
+  display: block;
+
+  margin: .25em 0;
+}
+
+
+/*
+Need to separate out the :not() selector from the rest of the CSS 2.1 selectors
+since IE8 won't execute CSS that contains a CSS3 selector.
+*/
+
+.ui-form-stacked input:not([type]) {
+  display: block;
+
+  margin: .25em 0;
+}
+
+.ui-form-aligned input,
+.ui-form-aligned textarea,
+.ui-form-aligned select,
+/* NOTE: ui-help-inline is deprecated. Use .ui-form-message-inline instead. */
+
+.ui-form-aligned .ui-help-inline,
+.ui-form-message-inline {
+  display: inline-block;
+
+  vertical-align: middle;
+
+  *display: inline;
+  *zoom: 1;
+}
+
+.ui-form-aligned textarea {
+  vertical-align: top;
+}
+
+
+/* Aligned Forms */
+
+.ui-form-aligned .ui-form-item {
+  margin-bottom: .5em;
+}
+
+.ui-form-aligned .ui-form-item label {
+  display: inline-block;
+
+  width: 10em;
+  margin: 0 1em 0 0;
+
+  text-align: right;
+  vertical-align: middle;
+}
+
+.ui-form-aligned .ui-controls {
+  margin: 1.5em 0 0 11em;
+}
+
+
+/* Aligned Full Forms */
+
+// .ui-form-aligned-full {
+//   .ui-form-item {
+//     display: flex;
+//     margin-bottom: 15px;
+//     .col-l {
+//       width: 70px;
+//       padding-right: 12px;
+//       text-align: right;
+//       height: 40px;
+//       line-height: 40px;
+//       margin: 0;
+//     }
+//     .col-r {
+//       flex: 1;
+//     }
+//   }
+// }
+
+
+/* Rounded Inputs */
+
+.ui-form input.ui-input-rounded,
+.ui-form .ui-input-rounded {
+  padding: .5em 1em;
+
+  border-radius: 2em;
+}
+
+
+/* Grouped Inputs */
+
+.ui-form .ui-group fieldset {
+  margin-bottom: 10px;
+}
+
+.ui-form .ui-group input,
+.ui-form .ui-group textarea {
+  position: relative;
+  top: -1px;
+
+  display: block;
+
+  margin: 0 0 -1px;
+  padding: 10px;
+
+  border-radius: 0;
+}
+
+.ui-form .ui-group input:focus,
+.ui-form .ui-group textarea:focus {
+  z-index: 3;
+}
+
+.ui-form .ui-group input:first-child,
+.ui-form .ui-group textarea:first-child {
+  top: 1px;
+
+  margin: 0;
+
+  border-radius: 4px 4px 0 0;
+}
+
+.ui-form .ui-group input:first-child:last-child,
+.ui-form .ui-group textarea:first-child:last-child {
+  top: 1px;
+
+  margin: 0;
+
+  border-radius: 4px;
+}
+
+.ui-form .ui-group input:last-child,
+.ui-form .ui-group textarea:last-child {
+  top: -2px;
+
+  margin: 0;
+
+  border-radius: 0 0 4px 4px;
+}
+
+.ui-form .ui-group button {
+  margin: .35em 0;
+}
+
+.ui-form .ui-input-1 {
+  width: 100%;
+}
+
+.ui-form .ui-input-3-4 {
+  width: 75%;
+}
+
+.ui-form .ui-input-2-3 {
+  width: 66%;
+}
+
+.ui-form .ui-input-1-2 {
+  width: 50%;
+}
+
+.ui-form .ui-input-1-3 {
+  width: 33%;
+}
+
+.ui-form .ui-input-1-4 {
+  width: 25%;
+}
+
+
+/* Inline help for forms */
+
+
+/* NOTE: ui-help-inline is deprecated. Use .ui-form-message-inline instead. */
+
+.ui-form .ui-help-inline,
+.ui-form-message-inline {
+  font-size: .875em;
+
+  display: inline-block;
+
+  padding-left: .3em;
+
+  vertical-align: middle;
+
+  color: $form-message-color;
+}
+
+
+/* Block help for forms */
+
+.ui-form-message {
+  font-size: .875em;
+
+  display: block;
+
+  color: $form-message-color;
+}
+
+.ui-form textarea {
+  resize: vertical;
+}

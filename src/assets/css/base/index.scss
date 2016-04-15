@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'normalize';
+@import 'form';
+@import 'btn';
+@import 'functions';
+
+/*==清除浮动==*/
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1
+}
+
+// body {
+//   font-family: '微软雅黑';
+// }

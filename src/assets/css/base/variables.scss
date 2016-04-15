@@ -1,0 +1,38 @@
+// Colors
+// 主色
+$brand-primary: #ff8300;
+$brand-success: #77BD27;
+$brand-warning: #FDA701;
+$brand-danger: #E34949;
+// 高亮
+$highlight-primary: #4A90E2;
+$highlight-secondary: #9013FE;
+$highlight-optional: #3F51B5;
+// 基础色
+$black: #333;
+$gray-darker: #666;
+$gray-dark: #999;
+$gray: #ccc;
+$gray-light: #eee;
+$gray-lighter: #f0f0f0;
+$gray-lightest: #f5f5f5;
+$white: #fff;
+// text
+$text-default-color: $black !default;
+$text-weak-color: #7c7c7c !default;
+$text-default-size: 14px !default;
+$text-small-size: 12px !default;
+// form
+$input-invalid-text-color: #b94a48 !default;
+$input-invalid-border-color: #e9322d !default;
+$input-focus-border-color: $brand-primary !default;
+$input-default-border-color: $gray !default;
+$input-default-border-radius: 2px !default;
+$input-disabled-bg-color: #eaeded !default;
+$input-disabled-text-color: #cad2d3 !default;
+$input-readonly-bg-color: #eee !default;
+$input-readonly-text-color: #777 !default;
+$form-legend-color: #333 !default;
+$form-message-color: #666 !default;
+//base-font-size
+$base-font-size: 64;
