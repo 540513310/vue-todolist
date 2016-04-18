@@ -12,10 +12,6 @@
 
 .item {
   position: relative;
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: nowrap;
-  // justify-content: flex-start;
   margin: 0;
   width: 100%;
   height: rem(95);
@@ -56,4 +52,16 @@
   .item-txt {
     color: #56abe4;
   }
+}
+
+.create {
+  position: fixed;
+  bottom: rem(27);
+  right: rem(27);
+  width: rem(100);
+  height: rem(100);
+  box-shadow: rem(10) rem(10) rem(5) #ccc;
+  border-radius: 50%;
+  background: url('../../assets/img/create-btn.png');
+  background-size: 100% 100%;
 }

@@ -11,6 +11,6 @@
   </header>
 </template>
 
-<style lang="scss" src="./title.scss" scoped></style>
+<style lang="scss" src="./userHeader.scss" scoped></style>
 
-<script src="./title.js"></script>
+<script src="./userHeader.js"></script>

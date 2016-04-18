@@ -1,0 +1,65 @@
+@function rem($target, $context: 64) {
+  @if $target==0 {
+    @return 0
+  }
+  @return $target / $context + 0rem;
+}
+
+.nav-header {
+  width: 100%;
+  height: rem(100);
+  background: #468f88;
+  .icon-left {
+    display: inline-block;
+    float: left;
+    width: rem(100);
+    height: rem(100);
+    margin-right: rem(30);
+  }
+  .header-txt {
+    display: inline-block;
+    width: auto;
+    height: rem(100);
+    line-height: rem(100);
+    font-size: rem(40);
+    color: #fff;
+  }
+}
+
+.mod-left {
+  float: left;
+  .avatar {
+    float: left;
+    display: inline-block;
+    width: rem(72);
+    height: rem(72);
+    line-height: rem(72);
+    font-size: rem(32);
+    text-align: center;
+    color: #fff;
+    background: #6394e1;
+    border-radius: 50%;
+    margin: rem(15);
+  }
+  .avatar-name {
+    font-size: rem(30);
+    height: rem(100);
+    line-height: rem(100);
+    color: #fff;
+  }
+}
+
+.mod-right {
+  float: right;
+  .query {
+    width: rem(40);
+    height: rem(40);
+    margin: rem(30);
+    margin-left: rem(40);
+  }
+  .message {
+    width: rem(40);
+    height: rem(40);
+    margin: rem(30) 0;
+  }
+}

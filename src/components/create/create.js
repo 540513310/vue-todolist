@@ -6,10 +6,11 @@ var data = function() {
 
 var methods = {
   tap: function() {
-    alert(this.test);
+    this.showEdit = true;
   }
 }
 export default {
   data: data,
+  props: ['showEdit'],
   methods: methods
 }
