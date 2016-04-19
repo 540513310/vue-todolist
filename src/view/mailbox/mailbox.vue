@@ -1,6 +1,6 @@
 <template>
-  <nav-header></nav-header>
-  <list-content></list-content>
+  <nav-header :title="title"></nav-header>
+  <list-content :key="key"></list-content>
 </template>
 
 <style lang="scss" src="../../assets/css/base/index.scss"></style>

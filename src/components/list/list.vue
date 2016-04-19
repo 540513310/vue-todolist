@@ -13,7 +13,7 @@
     <div class="completed" v-on:click="showCompleted">{{completedTxt}}</div>
     <ul class="completed-ul" v-show="completeState">
       <li class="list-item" v-for="item in completeList">
-        <i class="icon-select selected" v-on:click="complete($index)"></i>
+        <i class="icon-select selected"></i>
         <div class="item-txt completed-txt">{{item.text}}</div>
       </li>
     </ul>

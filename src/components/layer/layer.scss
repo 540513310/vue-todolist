@@ -5,46 +5,58 @@
   @return $target / $context + 0rem;
 }
 
-.nav-title {
+.layer-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: rem(100);
-  background: #468f88;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.mod-left {
-  float: left;
-  .avatar {
-    float: left;
-    display: inline-block;
-    width: rem(72);
-    height: rem(72);
-    line-height: rem(72);
-    font-size: rem(32);
-    text-align: center;
-    color: #fff;
-    background: #6394e1;
-    border-radius: 50%;
-    margin: rem(15);
+.layer-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: rem(-280);
+  margin-top: rem(-180);
+  padding: rem(30);
+  width: rem(500);
+  height: rem(300);
+  border-radius: rem(5);
+  background: #fff;
+  h3 {
+    font-size: rem(35);
   }
-  .avatar-name {
+  .layer-input {
     font-size: rem(30);
-    height: rem(100);
-    line-height: rem(100);
-    color: #fff;
+    width: rem(500);
+    height: rem(50);
+    border: 0;
+    border-bottom: 1px solid #ccc;
   }
-}
-
-.mod-right {
-  float: right;
-  .query {
-    width: rem(40);
-    height: rem(40);
-    margin: rem(30);
-    margin-left: rem(40);
-  }
-  .message {
-    width: rem(40);
-    height: rem(40);
-    margin: rem(30) 0;
+  .button-wrap {
+    position: absolute;
+    right: rem(20);
+    bottom: rem(20);
+    width: rem(200);
+    height: rem(80);
+    button {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      width: rem(100);
+      height: rem(80);
+      font-size: rem(25);
+      color: #14c48e;
+      border: 0;
+      background: #fff;
+    }
+    .commit {
+      float: right;
+    }
+    .cancel {
+      float: right;
+    }
   }
 }

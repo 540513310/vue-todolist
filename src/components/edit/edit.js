@@ -9,7 +9,7 @@ var methods = {
     alert(this.test);
   },
   cancel: function() {
-    this.showEdit = false;
+    this.editStatus = false;
   },
   focusInit: function() {
     $('.edit-area').focus();
@@ -17,7 +17,7 @@ var methods = {
 }
 export default {
   data: data,
-  props: ['showEdit'],
+  props: ['editStatus'],
   methods: methods,
   ready: function() {
     this.focusInit();

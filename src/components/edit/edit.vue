@@ -1,5 +1,5 @@
 <template>
-  <div class="edit-layer" v-show="showEdit">
+  <div class="edit-layer" v-show="editStatus">
     <div class="edit-content">
       <textarea class="edit-area" placeholder="在收件箱中添加一个任务..."></textarea>
       <div class="edit-footer">

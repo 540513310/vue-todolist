@@ -14,9 +14,11 @@ var App = Vue.extend({});
 
 router.map({
   '/': {
+    name: 'index',
     component: app
   },
-  '/mailbox': {
+  '/mailbox/:userId': {
+    name: 'mailbox',
     component: mailbox
   }
 })
