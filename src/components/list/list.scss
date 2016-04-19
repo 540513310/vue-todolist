@@ -77,7 +77,8 @@
   color: #4b4b4b;
 }
 
-.completed {
+.completed,
+.completed-clear {
   margin: 0 auto;
   width: rem(226);
   height: rem(70);
@@ -90,6 +91,10 @@
 
 .completed-txt {
   text-decoration: line-through;
+}
+
+.completed-ul {
+  padding-top: rem(13);
 }
 
 :-moz-placeholder {
