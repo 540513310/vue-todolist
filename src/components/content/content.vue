@@ -28,6 +28,9 @@
   <!-- <div class="create" v-touch:tap="showEdit"></div> -->
   <!-- <edit :edit-status.sync="editStatus"></edit> -->
   <layer :layer-status.sync="layerStatus" :list-collection.sync="listCollection"></layer>
+  <message :message-status.sync="messageStatus"
+    :list-collection.sync="listCollection"
+    :delete-index.sync="deleteIndex"></message>
 </template>
 
 <style lang="scss" src="./content.scss" scoped></style>

@@ -4,8 +4,8 @@
       <h3 class="layer-title">清单名称</h3>
       <input type="text" placeholder="清单名称" class="layer-input" v-model="newList">
       <div class="button-wrap clearfix">
-        <button class="cancel" v-on:click="cancel">取消</button>
-        <button class="commit" v-on:click="addList">确认</button>
+        <button class="cancel" v-touch:tap="cancel">取消</button>
+        <button class="commit" v-touch:tap="addList">确认</button>
       </div>
     </div>
   </div>

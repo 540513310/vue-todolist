@@ -5,10 +5,11 @@ var methods = {
     this.layerStatus = false;
   },
   addList: function() {
+    let key = Math.random();
     let len = this.listCollection.length + 1; //每个list含不同key，默认从1开始
     this.listCollection.push({
       name: this.newList,
-      key: len,
+      key: key,
       count: 0,
       removeStatus: false
     });

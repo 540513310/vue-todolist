@@ -1,6 +1,7 @@
 import create from '../create/create.vue'
 import edit from '../edit/edit.vue'
 import layer from '../layer/layer.vue'
+import message from '../message/message.vue'
 import store from '../../assets/js/store.js'
 
 var methods = {
@@ -11,41 +12,24 @@ var methods = {
     this.layerStatus = true;
   },
   showDelete: function(index) {
-    let _index = index;
-    $.each(this.listCollection, function(index, item) {
-      if (_index === index) {
-        item['removeStatus'] = true
-      }
-    })
+    this.toggleDelete(index, true);
   },
   hideDelete: function(index) {
+    this.toggleDelete(index, false);
+  },
+  toggleDelete: function(index, status) {
     let _index = index;
     $.each(this.listCollection, function(index, item) {
       if (_index === index) {
-        item['removeStatus'] = false
+        item['removeStatus'] = status;
       }
     })
   },
   deleteItem: function(index) {
-    this.removeListItem(index);
-    this.removeItemData(index);
-  },
-  removeListItem: function(index) {
-    let _t = this,
-      _index = index;
-    $.each(_t.listCollection, function(index, item) {
-      if (_index === index) {
-        _t.listCollection.splice(index, 1);
-      }
-    });
-    store.set('listCollection', _t.listCollection);
-  },
-  removeItemData: function(index) {
-    let todoKey = 'todoList_' + (index + 1),
-      completeKey = 'completeList_' + (index + 1);
-
-    store.remove(todoKey);
-    store.remove(completeKey);
+    this.messageStatus = true;
+    this.deleteIndex = index;
+    // this.removeListItem(index);
+    // this.removeItemData(index);
   },
   initNum: function() {
     this.boxNum = store.get('todoList_0') ? store.get('todoList_0').length : '0';
@@ -61,6 +45,8 @@ export default {
       editStatus: false,
       layerStatus: false,
       leftStatus: false,
+      messageStatus: false,
+      deleteIndex: '',
       boxNum: '',
       listCollection: [],
       numList: []
@@ -70,7 +56,8 @@ export default {
   components: {
     create: create,
     edit: edit,
-    layer: layer
+    layer: layer,
+    message: message
   },
   ready: function() {
     this.initList();
