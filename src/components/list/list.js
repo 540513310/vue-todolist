@@ -1,20 +1,41 @@
 import store from '../../assets/js/store.js'
 
 let methods = {
-  add: function() {
+  saveTodo: function() {
     let todoKey = this.todoKey;
-    this.todoList.push({
-      text: this.newTodo
+    store.set(todoKey, this.todoList);
+  },
+  saveComplete: function() {
+    let completeKey = this.completeKey;
+    store.set(completeKey, this.completeList);
+  },
+  saveListCount: function() {
+    let todoKey = this.todoKey,
+      len = this.todoList.length,
+      listCollection = store.get('listCollection') || [];
+
+    $.each(listCollection, function(index, item) {
+      let _todoKey = 'todoList_' + item['key'];
+      if (_todoKey === todoKey) {
+        item['count'] = len;
+      }
     });
 
-    store.set(key, this.todoList);
+    store.set('listCollection', listCollection);
+  },
+  add: function() {
+    this.todoList.push({
+      text: this.newTodo,
+      removeStatus: false
+    });
+
+    this.saveTodo();
+    this.saveListCount();
     this.newTodo = ''; //清空input
   },
   complete: function($index) {
     let todoList = this.todoList,
       completeList = this.completeList;
-    let todoKey = this.todoKey,
-      completeKey = this.completeKey;
 
     $.each(todoList, function(index, item) {
       if (+$index === index) {
@@ -23,8 +44,9 @@ let methods = {
       }
     });
 
-    store.set(completeKey, this.completeList);
-    store.set(todoKey, this.todoList);
+    this.saveTodo();
+    this.saveComplete();
+    this.saveListCount();
   },
   showCompleted: function() {
     this.completeState = !this.completeState;
@@ -37,6 +59,35 @@ let methods = {
   clearCompleted: function() {
     store.remove('completeList');
     this.completeList = [];
+  },
+  showDelete: function(index) {
+    this.toggleDelete(index, true);
+  },
+  hideDelete: function(index) {
+    this.toggleDelete(index, false);
+  },
+  toggleDelete: function(index, status) {
+    var _t = this,
+      _index = index;
+
+    $.each(_t.todoList, function(index, item) {
+      if (+_index === index) {
+        item['removeStatus'] = status;
+      }
+    })
+  },
+  deleteItem: function(index) {
+    var _t = this,
+      _index = index;
+
+    $.each(_t.todoList, function(index, item) {
+      if (+_index === index) {
+        _t.todoList.splice(index, 1)[0];
+      }
+    });
+
+    _t.saveTodo();
+    _t.saveListCount();
   }
 };
 

@@ -5,8 +5,12 @@ var methods = {
     this.layerStatus = false;
   },
   addList: function() {
+    let len = this.listCollection.length + 1; //每个list含不同key，默认从1开始
     this.listCollection.push({
-      name: this.newList
+      name: this.newList,
+      key: len,
+      count: 0,
+      removeStatus: false
     });
     store.set('listCollection', this.listCollection);
     this.layerStatus = false;
@@ -15,14 +19,13 @@ var methods = {
 
 var data = function() {
   return {
-    newList: '',
-    listCollection: []
+    newList: ''
   }
 };
 
 export default {
   data: data,
-  props: ['layerStatus'],
+  props: ['layerStatus', 'listCollection'],
   methods: methods,
   ready: function() {
     this.listCollection = store.get('listCollection') || [];

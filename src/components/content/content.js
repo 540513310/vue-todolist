@@ -3,10 +3,6 @@ import edit from '../edit/edit.vue'
 import layer from '../layer/layer.vue'
 import store from '../../assets/js/store.js'
 
-var ctrl = {
-
-};
-
 var methods = {
   showEdit: function() {
     this.editStatus = true;
@@ -14,11 +10,45 @@ var methods = {
   showLayer: function() {
     this.layerStatus = true;
   },
-  initNum: function() {
-    var todoList = store.get('todoList') || [];
-    $.each(todoList, function(index, item) {
-
+  showDelete: function(index) {
+    let _index = index;
+    $.each(this.listCollection, function(index, item) {
+      if (_index === index) {
+        item['removeStatus'] = true
+      }
+    })
+  },
+  hideDelete: function(index) {
+    let _index = index;
+    $.each(this.listCollection, function(index, item) {
+      if (_index === index) {
+        item['removeStatus'] = false
+      }
+    })
+  },
+  deleteItem: function(index) {
+    this.removeListItem(index);
+    this.removeItemData(index);
+  },
+  removeListItem: function(index) {
+    let _t = this,
+      _index = index;
+    $.each(_t.listCollection, function(index, item) {
+      if (_index === index) {
+        _t.listCollection.splice(index, 1);
+      }
     });
+    store.set('listCollection', _t.listCollection);
+  },
+  removeItemData: function(index) {
+    let todoKey = 'todoList_' + (index + 1),
+      completeKey = 'completeList_' + (index + 1);
+
+    store.remove(todoKey);
+    store.remove(completeKey);
+  },
+  initNum: function() {
+    this.boxNum = store.get('todoList_0') ? store.get('todoList_0').length : '0';
   },
   initList: function() {
     this.listCollection = store.get('listCollection') || [];
@@ -30,6 +60,7 @@ export default {
     return {
       editStatus: false,
       layerStatus: false,
+      leftStatus: false,
       boxNum: '',
       listCollection: [],
       numList: []

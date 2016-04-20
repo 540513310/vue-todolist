@@ -41,6 +41,7 @@
 }
 
 .list-item {
+  position: relative;
   margin: 0 auto;
   margin-bottom: rem(13);
   width: rem(612);
@@ -48,6 +49,28 @@
   font-size: rem(30);
   border-radius: rem(5);
   background: #fff;
+}
+
+.remove {
+  transform: translateX(rem(150));
+}
+
+.removeBtn {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: rem(150);
+  height: rem(87);
+  line-height: rem(87);
+  font-size: rem(25);
+  color: #fff;
+  background: #fe0032;
+  text-align: center;
+  border-radius: rem(5) 0 0 rem(5);
+  &.active {
+    display: inline-block;
+  }
 }
 
 .icon-select {
