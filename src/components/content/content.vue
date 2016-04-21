@@ -8,7 +8,7 @@
     <li>
       <ul class="new-list" v-for="item in listCollection">
         <li class="list">
-          <span class="removeBtn" :class="{'active': item.removeStatus}" v-touch:tap="deleteItem($index)">删除</span>
+          <span class="removeBtn" :class="{'active': item.removeStatus}" v-touch:tap="showDeleteLayer($index)">删除</span>
           <div class="item"  :class="{'remove': item.removeStatus}"
             v-touch:swipeleft="hideDelete($index)"
             v-touch:swiperight="showDelete($index)"
@@ -25,12 +25,10 @@
       <span class="item-txt">创建清单</span>
     </li>
   </ul>
-  <!-- <div class="create" v-touch:tap="showEdit"></div> -->
-  <!-- <edit :edit-status.sync="editStatus"></edit> -->
-  <layer :layer-status.sync="layerStatus" :list-collection.sync="listCollection"></layer>
-  <message :message-status.sync="messageStatus"
-    :list-collection.sync="listCollection"
-    :delete-index.sync="deleteIndex"></message>
+  <layer :layer-status.sync="layerStatus"
+    :layer-message.sync="layerMessage"
+    :new-val.sync="newVal"></layer>
+  <message :delete-status.sync="deleteStatus"></message>
 </template>
 
 <style lang="scss" src="./content.scss" scoped></style>

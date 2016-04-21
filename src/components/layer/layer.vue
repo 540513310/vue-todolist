@@ -1,11 +1,11 @@
 <template>
   <div class="layer-wrap" v-show="layerStatus">
     <div class="layer-content">
-      <h3 class="layer-title">清单名称</h3>
-      <input type="text" placeholder="清单名称" class="layer-input" v-model="newList">
+      <h3 class="layer-title">{{layerMessage}}</h3>
+      <input type="text" placeholder="{{layerMessage}}" class="layer-input" v-model="newVal">
       <div class="button-wrap clearfix">
         <button class="cancel" v-touch:tap="cancel">取消</button>
-        <button class="commit" v-touch:tap="addList">确认</button>
+        <button class="commit" v-touch:tap="commit">确认</button>
       </div>
     </div>
   </div>

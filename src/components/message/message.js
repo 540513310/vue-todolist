@@ -2,45 +2,27 @@ import store from '../../assets/js/store.js'
 
 var methods = {
   cancel: function() {
-    this.messageStatus = false;
+    this.$dispatch('delete_cancel');
   },
   confirm: function() {
-    this.messageStatus = false;
-    this.removeListItem(this.deleteIndex);
-    // this.removeItemData(this.deleteIndex);
-  },
-  removeListItem: function(index) {
-    let _t = this,
-      _index = index;
-
-    $.each(_t.listCollection, function(index, item) {
-      if (_index === index) {
-        var removeList = _t.listCollection.splice(index, 1)[0];
-        _t.deletKey = removeList['key'];
-      }
-    });
-    store.set('listCollection', _t.listCollection);
-    _t.removeItemData(_t.deletKey);
-  },
-  removeItemData: function(key) {
-    let todoKey = 'todoList_' + key,
-      completeKey = 'completeList_' + key;
-
-    console.log(todoKey, completeKey);
-    store.remove(todoKey);
-    store.remove(completeKey);
-  },
+    this.$dispatch('delete_confirm');
+  }
 };
 
 export default {
   data: function() {
-    return {
-      deletKey: ''
-    }
+    return {}
   },
-  props: ['messageStatus', 'listCollection', 'deleteIndex'],
+  props: ['deleteStatus'],
   methods: methods,
   ready: function() {
+    this.$on('delete_cancel', function() {
+      return true;
+    });
+
+    this.$on('delete_confirm', function() {
+      return true;
+    });
     // this.listCollection = store.get('listCollection') || [];
   }
 }

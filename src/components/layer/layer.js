@@ -2,33 +2,31 @@ import store from '../../assets/js/store.js'
 
 var methods = {
   cancel: function() {
-    this.layerStatus = false;
+    this.$dispatch('layer_cancel');
   },
-  addList: function() {
-    let key = Math.random();
-    let len = this.listCollection.length + 1; //每个list含不同key，默认从1开始
-    this.listCollection.push({
-      name: this.newList,
-      key: key,
-      count: 0,
-      removeStatus: false
-    });
-    store.set('listCollection', this.listCollection);
-    this.layerStatus = false;
+  commit: function() {
+    this.$dispatch('layer_confirm');
   }
 };
 
 var data = function() {
-  return {
-    newList: ''
-  }
+  return {}
 };
 
 export default {
   data: data,
-  props: ['layerStatus', 'listCollection'],
+  props: ['layerStatus', 'newVal', 'layerMessage'],
   methods: methods,
   ready: function() {
-    this.listCollection = store.get('listCollection') || [];
+    // this.$watch('layerMessage', function(newVal, oldVal) {
+    //   console.log(newVal, oldVal);
+    // });
+    this.$on('layer_cancel', function() {
+      return true;
+    });
+
+    this.$on('layer_confirm', function() {
+      return true;
+    });
   }
 }

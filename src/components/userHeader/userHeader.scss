@@ -1,3 +1,4 @@
+@import '../layer/layer.scss';
 @function rem($target, $context: 64) {
   @if $target==0 {
     @return 0
