@@ -1,27 +1,21 @@
-# vue-demo
+# vue-list
 
-> A Vue.js project
+> 一个基于vue.js的todolist
+>模仿奇妙清单
 
-## Build Setup
+## 运行
 
 ``` bash
-# install dependencies
+# 安装npm依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 在本地启动服务
 npm run dev
 
-# build for production with minification
+# 压缩并且构建生产文件
 npm run build
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
+## 介绍
 
-For detailed explanation on how things work, checkout the [guide](https://github.com/vuejs-templates/webpack#vue-webpack-boilerplate) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+项目线上访问路径：[vue-list](http://www.wendaosanshou.top/vue/list/#!/)

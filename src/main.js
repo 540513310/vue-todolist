@@ -4,8 +4,11 @@ import VueRouter from 'vue-router'
 import app from './view/app/app.vue'
 import mailbox from './view/mailbox/mailbox.vue'
 import $ from 'webpack-zepto'
+import adapte from './assets/js/adapte'
 
 window.$ = $;
+adapte.setPxPerRem();
+
 Vue.use(VueTouch)
 Vue.use(VueRouter)
 

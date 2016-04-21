@@ -7,6 +7,7 @@ module.exports = {
     assetsRoot: path.resolve(__dirname, 'dist'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    // assetsPublicPath: 'http://www.wendaosanshou.top/vue/list/',
     productionSourceMap: true
   },
   dev: {
