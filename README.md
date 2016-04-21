@@ -1,7 +1,7 @@
 # vue-list
 
 > 一个基于vue.js的todolist
->模仿奇妙清单
+> 模仿奇妙清单
 
 ## 运行
 
@@ -18,4 +18,4 @@ npm run build
 ```
 ## 介绍
 
-项目线上访问路径：[vue-list](http://www.wendaosanshou.top/vue/list/#!/)
+项目线上访问路径：[http://www.wendaosanshou.top/vue/list/#!/](http://www.wendaosanshou.top/vue/list/#!/)
