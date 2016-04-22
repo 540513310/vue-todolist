@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-wrap" v-show="layerStatus">
+  <div class="layer-wrap" v-if="layerStatus">
     <div class="layer-content">
       <h3 class="layer-title">{{layerMessage}}</h3>
       <input type="text" placeholder="{{layerMessage}}" class="layer-input" v-model="newVal">

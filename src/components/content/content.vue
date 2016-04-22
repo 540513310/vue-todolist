@@ -3,11 +3,11 @@
     <li class="mailbox item" v-link="{name: 'mailbox', params: { userId: 0 }, query: {title: '收件箱', key: '0'}}">
       <i class="item-icon icon-mailbox"></i>
       <span class="item-txt">收件箱</span>
-      <span class="item-num">{{boxNum}}</span>
+      <span class="item-num">{{defaultNum}}</span>
     </li>
     <li>
-      <ul class="new-list" v-for="item in listCollection">
-        <li class="list">
+      <ul class="new-list" v-for="item in collections">
+        <li class="list" v-if="!item.defaultList">
           <span class="removeBtn" :class="{'active': item.removeStatus}" v-touch:tap="showDeleteLayer($index)">删除</span>
           <div class="item"  :class="{'remove': item.removeStatus}"
             v-touch:swipeleft="hideDelete($index)"

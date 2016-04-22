@@ -18,9 +18,6 @@ export default {
   props: ['layerStatus', 'newVal', 'layerMessage'],
   methods: methods,
   ready: function() {
-    // this.$watch('layerMessage', function(newVal, oldVal) {
-    //   console.log(newVal, oldVal);
-    // });
     this.$on('layer_cancel', function() {
       return true;
     });

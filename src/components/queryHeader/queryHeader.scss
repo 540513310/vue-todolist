@@ -1,0 +1,27 @@
+@function rem($target, $context: 64) {
+  @if $target==0 {
+    @return 0
+  }
+  @return $target / $context + 0rem;
+}
+
+.nav-header {
+  width: 100%;
+  height: rem(100);
+  background: #468f88;
+  box-shadow: 0 5px 5px #ccc;
+  .icon-left {
+    display: inline-block;
+    float: left;
+    width: rem(100);
+    height: rem(100);
+    margin-right: rem(30);
+  }
+  .ipt-query {
+    width: rem(460);
+    height: rem(46);
+    font-size: rem(34);
+    border: 0;
+    background: #468f88;
+  }
+}

@@ -5,7 +5,7 @@
       <span class="avatar-name">{{name}}</span>
     </div>
     <div class="mod-right clearfix">
-      <img src="../../assets/img/query.png" class="query">
+      <img src="../../assets/img/query.png" class="query" v-link="{name: 'query'}">
     </div>
   </header>
   <layer

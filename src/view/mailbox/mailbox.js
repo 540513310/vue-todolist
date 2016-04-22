@@ -10,7 +10,7 @@ export default {
   data: function() {
     return {
       title: '',
-      key: '123'
+      key: ''
     }
   },
   route: {

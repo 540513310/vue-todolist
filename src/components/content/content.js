@@ -12,15 +12,17 @@ var methods = {
     this.layerStatus = true;
   },
   showDelete: function(index) {
-    console.log(index);
+    console.log('show');
     this.toggleDelete(index, true);
   },
   hideDelete: function(index) {
+    console.log('hide');
     this.toggleDelete(index, false);
   },
   toggleDelete: function(index, status) {
-    let _index = index;
-    $.each(this.listCollection, function(index, item) {
+    let _t = this,
+      _index = index;
+    $.each(_t.collections, function(index, item) {
       if (_index === index) {
         item['removeStatus'] = status;
       }
@@ -34,15 +36,13 @@ var methods = {
     let _t = this,
       _index = this.deleteIndex;
 
-    $.each(_t.listCollection, function(index, item) {
+    $.each(_t.collections, function(index, item) {
       if (_index === index) {
-        var removeList = _t.listCollection.splice(index, 1)[0];
-        _t.deletKey = removeList['key'];
+        _t.collections.splice(index, 1)[0];
       }
     })
 
-    store.set('listCollection', _t.listCollection);
-    _t.removeItemData(_t.deletKey);
+    store.set('collections', _t.collections);
   },
   removeItemData: function(key) {
     let todoKey = 'todoList_' + key,
@@ -52,22 +52,51 @@ var methods = {
     store.remove(completeKey);
   },
   initNum: function() {
-    this.boxNum = store.get('todoList_0') ? store.get('todoList_0').length : '0';
+    var _t = this;
+    $.each(_t.collections, function(index, item) {
+      if (item['defaultList']) {
+        _t.defaultNum = item['count'];
+      }
+    })
   },
-  initList: function() {
-    this.listCollection = store.get('listCollection') || [];
+  initCollections: function() {
+    let _t = this;
+    this.collections = store.get('collections') || [];
+
+    var noDefault = this.collections.every(function(item, index) {
+      return !item['defaultList'];
+    });
+    if (noDefault) {
+      _t.addDefaultList();
+    }
+
+    this.$log('collections');
   },
   addList: function() {
     let key = Math.random();
-    let len = this.listCollection.length + 1; //每个list含不同key，默认从1开始
-    this.listCollection.push({
-      name: this.newVal,
-      key: key,
-      count: 0,
-      removeStatus: false
+    this.collections.push({
+      'key': key,
+      'name': this.newVal,
+      'count': 0,
+      'removeStatus': false,
+      'defaultList': false,
+      'todoList': [],
+      'completeList': []
     });
-    store.set('listCollection', this.listCollection);
+    store.set('collections', this.collections);
     this.layerStatus = false; //隐藏layer
+  },
+  addDefaultList: function() {
+    this.collections.push({
+      'key': '0',
+      'name': '收件箱',
+      'count': 0,
+      'removeStatus': false,
+      'todoList': [],
+      'completeList': [],
+      'defaultList': true
+    });
+    store.set('collections', this.collections);
   }
 };
 
@@ -81,8 +110,10 @@ export default {
       layerMessage: '清单名称',
       newVal: '',
       deleteIndex: '',
-      boxNum: '',
-      listCollection: []
+      defaultNum: '',
+      listCollection: [],
+      collections: [],
+      defaultList: ''
     }
   },
   methods: methods,
@@ -93,7 +124,7 @@ export default {
     message: message
   },
   ready: function() {
-    this.initList();
+    this.initCollections();
     this.initNum();
 
     this.$on('layer_cancel', function() {

@@ -1,5 +1,5 @@
 <template>
-  <div class="layer-wrap" v-show="deleteStatus">
+  <div class="layer-wrap" v-if="deleteStatus">
     <div class="layer-content">
       <h3 class="layer-title">清单名称</h3>
       <div class="txt-content">您确认要删除该清单？</div>

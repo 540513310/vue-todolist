@@ -1,37 +1,20 @@
 import store from '../../assets/js/store.js'
 
 let methods = {
-  saveTodo: function() {
-    let todoKey = this.todoKey;
-    store.set(todoKey, this.todoList);
-  },
-  saveComplete: function() {
-    let completeKey = this.completeKey;
-    store.set(completeKey, this.completeList);
-  },
-  saveListCount: function() {
-    let todoKey = this.todoKey,
-      len = this.todoList.length,
-      listCollection = store.get('listCollection') || [];
-
-    $.each(listCollection, function(index, item) {
-      let _todoKey = 'todoList_' + item['key'];
-      if (_todoKey === todoKey) {
-        item['count'] = len;
-      }
-    });
-
-    store.set('listCollection', listCollection);
+  saveCollection: function() {
+    store.set('collections', this.collections);
   },
   add: function() {
     this.todoList.push({
       text: this.newTodo,
       removeStatus: false
-    });
+    }); //更新todolist
 
-    this.saveTodo();
-    this.saveListCount();
     this.newTodo = ''; //清空input
+    this.itemData['count'] = this.todoList.length; //更新count
+    this.saveCollection();
+
+    this.$log('itemData');
   },
   complete: function($index) {
     let todoList = this.todoList,
@@ -44,9 +27,8 @@ let methods = {
       }
     });
 
-    this.saveTodo();
-    this.saveComplete();
-    this.saveListCount();
+    this.itemData['count'] = this.todoList.length; //更新count
+    this.saveCollection();
   },
   showCompleted: function() {
     this.completeState = !this.completeState;
@@ -57,8 +39,11 @@ let methods = {
     }
   },
   clearCompleted: function() {
-    store.remove('completeList');
+    this.itemData['completeList'] = [];
     this.completeList = [];
+
+    this.$log('itemData');
+    this.saveCollection();
   },
   showDelete: function(index) {
     this.toggleDelete(index, true);
@@ -86,8 +71,20 @@ let methods = {
       }
     });
 
-    _t.saveTodo();
-    _t.saveListCount();
+    _t.saveCollection();
+  },
+  initItemData: function(key) {
+    var _t = this;
+    this.collections = store.get('collections');
+    $.each(this.collections, function(index, item) {
+      if (+item['key'] === +key) {
+        _t.itemData = item;
+      }
+    })
+
+    this.todoList = this.itemData['todoList'];
+    this.completeList = this.itemData['completeList'];
+    this.$log('itemData');
   }
 };
 
@@ -97,24 +94,18 @@ export default {
       newTodo: '',
       completeState: false,
       completedTxt: '显示已完成任务',
+      count: '',
+      itemData: '',
       todoList: [],
       completeList: [],
-      todoKey: '',
-      completeKey: ''
+      collections: []
     }
   },
   props: ['key'],
   methods: methods,
   ready: function() {
     this.$watch('key', function(newVal, oldVal) {
-      this.todoKey = 'todoList_' + newVal;
-      this.completeKey = 'completeList_' + newVal;
-
-      let todoList = store.get(this.todoKey) || [];
-      let completeList = store.get(this.completeKey) || [];
-
-      this.todoList = todoList;
-      this.completeList = completeList;
+      this.initItemData(newVal);
     });
   }
 }

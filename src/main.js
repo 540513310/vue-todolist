@@ -3,6 +3,7 @@ import VueTouch from 'vue-touch'
 import VueRouter from 'vue-router'
 import app from './view/app/app.vue'
 import mailbox from './view/mailbox/mailbox.vue'
+import query from './view/query/query.vue'
 import $ from 'webpack-zepto'
 import adapte from './assets/js/adapte'
 
@@ -23,6 +24,10 @@ router.map({
   '/mailbox/:userId': {
     name: 'mailbox',
     component: mailbox
+  },
+  '/query': {
+    name: 'query',
+    component: query
   }
 })
 
