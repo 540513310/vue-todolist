@@ -3,7 +3,7 @@ import queryContent from '../../components/queryContent/queryContent.vue'
 import store from '../../assets/js/store.js'
 
 let methods = {
-  getQueryList: function() {
+  initQueryList: function() {
     let _t = this;
     this.collections = store.get('collections');
 
@@ -18,8 +18,6 @@ let methods = {
         }
       }
     });
-
-    this.$log('collections');
   },
   clearQueryCollection: function() {
     this.queryCollections = [];
@@ -41,7 +39,7 @@ export default {
   methods: methods,
   ready: function() {
     this.$on('query_toggleInput', function() {
-      this.getQueryList();
+      this.initQueryList();
     });
   }
 }

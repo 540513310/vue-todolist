@@ -15,7 +15,8 @@ let methods = {
 export default {
   data: function() {
     return {
-      'itemData': ''
+      'itemData': '',
+      'listType': 'query'
     }
   },
   props: ['collections'],
@@ -23,7 +24,8 @@ export default {
   components: {
     'list-todo': listTodo
   },
+
   ready: function() {
-    // this.initItemData();
+
   }
 }

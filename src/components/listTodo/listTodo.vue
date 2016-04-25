@@ -1,6 +1,6 @@
 <template>
   <ul class="todo-ul">
-    <li class="list-item" v-for="item in todoList">
+    <li class="list-item" v-for="item in todoList" v-if="item.queryStatus | showQuery listType">
       <span class="removeBtn" :class="{'active': item.removeStatus}" v-touch:tap="deleteItem($index)">删除</span>
       <div class="item" :class="{'remove': item.removeStatus}"
         v-touch:swipeleft="hideDelete($index)"

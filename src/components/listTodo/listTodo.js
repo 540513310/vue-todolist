@@ -30,6 +30,7 @@ let methods = {
       }
     });
 
+    this.itemData['count'] = this.todoList.length; //更新count
     this.saveCollection();
   },
   complete: function($index) {
@@ -55,16 +56,17 @@ export default {
       completeList: []
     }
   },
-  props: ['itemData', 'collections'],
+  props: ['itemData', 'collections', 'listType'],
   methods: methods,
   ready: function() {
-    // this.$log('itemData');
-    // console.log(this.itemData);
+    this.todoList = this.itemData.todoList;
+    this.completeList = this.itemData.completeList;
 
+    //如果itemData数据会变化
     this.$watch('itemData', function(newVal, oldVal) {
-      console.log(newVal);
       this.todoList = newVal.todoList;
       this.completeList = newVal.completeList;
-    })
+    });
+
   }
 }

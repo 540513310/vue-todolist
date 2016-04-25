@@ -16,6 +16,14 @@ Vue.use(VueRouter)
 var router = new VueRouter();
 var App = Vue.extend({});
 
+Vue.filter('showQuery', function(val, type) {
+  if (type === 'query') {
+    return val;
+  } else {
+    return true;
+  }
+});
+
 router.map({
   '/': {
     name: 'index',
