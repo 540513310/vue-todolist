@@ -1,7 +1,7 @@
 <template>
   <header class="nav-header">
     <img src="../../assets/img/arrow-left.png" class="icon-left" v-touch:tap="back">
-    <input type="text" class="ipt-query" placeholder="搜索...">
+    <input type="text" class="ipt-query" placeholder="搜索..." v-model="title" v-on:input="toggleInput">
   </header>
 </template>
 

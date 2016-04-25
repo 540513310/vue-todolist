@@ -1,6 +1,30 @@
 import queryHeader from '../../components/queryHeader/queryHeader.vue'
 import queryContent from '../../components/queryContent/queryContent.vue'
+import store from '../../assets/js/store.js'
 
+let methods = {
+  getQueryList: function() {
+    let _t = this;
+    this.collections = store.get('collections');
+
+    $.each(this.collections, function(index, item) {
+      let todoList = item.todoList;
+
+      for (let i = todoList.length - 1; i >= 0; i--) {
+        let text = todoList[i]['text'];
+        if (text.indexOf(_t.title) !== -1 && _t.title.length !== 0) {
+          item.todoList[i].queryStatus = true;
+          item.showQuery = true;
+        }
+      }
+    });
+
+    this.$log('collections');
+  },
+  clearQueryCollection: function() {
+    this.queryCollections = [];
+  }
+};
 
 export default {
   components: {
@@ -10,8 +34,14 @@ export default {
   data: function() {
     return {
       title: '',
-      key: '123'
+      collections: [],
+      queryCollections: []
     }
   },
-  ready: function() {}
+  methods: methods,
+  ready: function() {
+    this.$on('query_toggleInput', function() {
+      this.getQueryList();
+    });
+  }
 }

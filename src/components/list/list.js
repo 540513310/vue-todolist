@@ -1,4 +1,6 @@
 import store from '../../assets/js/store.js'
+import listTodo from '../listTodo/listTodo.vue'
+import listComplete from '../listComplete/listComplete.vue'
 
 let methods = {
   saveCollection: function() {
@@ -13,65 +15,6 @@ let methods = {
     this.newTodo = ''; //清空input
     this.itemData['count'] = this.todoList.length; //更新count
     this.saveCollection();
-
-    this.$log('itemData');
-  },
-  complete: function($index) {
-    let todoList = this.todoList,
-      completeList = this.completeList;
-
-    $.each(todoList, function(index, item) {
-      if (+$index === index) {
-        let complete = todoList.splice(index, 1)[0];
-        completeList.push(complete);
-      }
-    });
-
-    this.itemData['count'] = this.todoList.length; //更新count
-    this.saveCollection();
-  },
-  showCompleted: function() {
-    this.completeState = !this.completeState;
-    if (this.completeState) {
-      this.completedTxt = '已完成任务';
-    } else {
-      this.completedTxt = '显示已完成任务';
-    }
-  },
-  clearCompleted: function() {
-    this.itemData['completeList'] = [];
-    this.completeList = [];
-
-    this.$log('itemData');
-    this.saveCollection();
-  },
-  showDelete: function(index) {
-    this.toggleDelete(index, true);
-  },
-  hideDelete: function(index) {
-    this.toggleDelete(index, false);
-  },
-  toggleDelete: function(index, status) {
-    var _t = this,
-      _index = index;
-
-    $.each(_t.todoList, function(index, item) {
-      if (+_index === index) {
-        item['removeStatus'] = status;
-      }
-    })
-  },
-  deleteItem: function(index) {
-    var _t = this,
-      _index = index;
-
-    $.each(_t.todoList, function(index, item) {
-      if (+_index === index) {
-        _t.todoList.splice(index, 1)[0];
-      }
-    });
-
-    _t.saveCollection();
   },
   initItemData: function(key) {
     var _t = this;
@@ -103,9 +46,17 @@ export default {
   },
   props: ['key'],
   methods: methods,
+  components: {
+    'list-todo': listTodo,
+    'list-complete': listComplete
+  },
   ready: function() {
     this.$watch('key', function(newVal, oldVal) {
       this.initItemData(newVal);
+    });
+
+    this.$on('list_saveCollection', function() {
+      this.saveCollection();
     });
   }
 }
