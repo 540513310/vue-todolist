@@ -18,11 +18,11 @@ npm run build
 ```
 ## 介绍
 
-项目线上访问路径：[http://www.wendaosanshou.top/vue_todolist/#!/](http://www.wendaosanshou.top/vue_todolist/#!/)
+项目线上访问路径：[http://www.wendaosanshou.top/vue_todolist/#!/](http:www.wendaosanshou.top/vue_todolist/#!/)
 
 ## 页面效果
 
 ### 项目启动后页面效果
-!(list1)[]
-!(list2)[]
-!(list3)[]
+![list1](https://raw.githubusercontent.com/wendaosanshou/vue-todolist/master/source/todolist1.png)
+![list2](https://raw.githubusercontent.com/wendaosanshou/vue-todolist/master/source/list2.png)
+![list3](https://raw.githubusercontent.com/wendaosanshou/vue-todolist/master/source/list3.png)
